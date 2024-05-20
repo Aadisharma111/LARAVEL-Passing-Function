@@ -1,7 +1,7 @@
 <?php
 //Import Area
 
-namespace App\Http\Controller;
+namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 

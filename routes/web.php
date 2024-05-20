@@ -1,15 +1,19 @@
 <?php
-//Import Area 
+ //Import Area 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\Enemycontroller;
-use App\Http\Controller\Citycontroller;
+use App\Http\Controllers\Enemycontroller;
+use App\Http\Controllers\Citycontroller;
+use App\Http\Controllers\Laptopcontroller;
+use App\Http\Controllers\Bikecontroller;
+use App\Http\Controllers\Birdscontroller;
 Route::get('/', function () {
     return view('welcome');  
 });
-
-Route::get('/Akash', function () {
-    $data = ['name'=>'Nothing01','surname'=>'Loading']; 
-    return view('Nothing01',$data);
+    Route::get('/product', function () {
+    return view('product'); 
+    });
+     Route::get('/search', function () {
+    return view('search');  
 });
 
 Route::get('/Nothing01',[Enemycontroller::class,'Nothing01']);
@@ -27,7 +31,12 @@ Route::prefix('mp')->group(function () {
         return 'Hello from bhopal route';
     });
 });
-?>
+       //scope resolution operators
+       Route::get('/mybikes',[Bikecontroller::class,'index']);
+        
+   
+        Route::resource('laptops', LaptopController::class);
+
 
 
 

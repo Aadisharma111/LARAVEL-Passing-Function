@@ -13,7 +13,7 @@ class LaptopSeeder extends Seeder
 
         DB::table('laptops')->insert([ 
                                         ['brand_name'=>'IBALL'],
-                                        ['brand_name'=>'ASUS'],
+                                        [''=>'brand_nameASUS'],
                                         ['brand_name'=>'APPLE'],
                                         ['brand_name'=>'HP']
                                     ]);

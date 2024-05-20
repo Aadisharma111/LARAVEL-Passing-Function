@@ -1,26 +1,26 @@
 <?php
-namespace App\Http\Controllers;
-use App\Models\Laptop;
+namespace app\Http\Controllers;
+use app\Models\Laptop;
 use Illuminate\Http\Request;
 
-class LaptopController extends Controller
+
+class Laptopcontroller extends Controller
 {
     public function index()
     {
-        //Every method return somenint
-        $laptops = Laptop::all();//2. Eleqouent
-        return view('Laptop.Laptop',compact('Laptops'));  // laptop.blade.php
+       
+        $laptops = Laptop::all();
+        return view('laptop.laptop',compact('laptops'));  
     }
     public function create()
     {
-        //return 'crete method';
-        return view('Laptop.createLaptop');
+        return view('laptop.createlaptop');
     }
         public function store(Request $request)
     {
 
     }
-       public function show(Laptop $Laptop)
+       public function show(Laptop $laptop)
     {
         
     }

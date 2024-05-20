@@ -1,5 +1,5 @@
 <?php
-namespace app\Http\Controller;
+namespace app\Http\Controllers;
 use Illuminate\Http\Request;
                               // Ex=Single Inheritance
 class Citycontroller extends Controller
