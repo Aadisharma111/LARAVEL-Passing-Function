@@ -4,7 +4,7 @@ use app\Models\Laptop;
 use Illuminate\Http\Request;
 
 
-class Laptopcontroller extends Controller
+class LaptopController extends Controller
 {
     public function index()
     {

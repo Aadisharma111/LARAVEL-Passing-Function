@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Enemycontroller;
 use App\Http\Controllers\Citycontroller;
-use App\Http\Controllers\Laptopcontroller;
+use App\Http\Controllers\LaptopController;
 use App\Http\Controllers\Bikecontroller;
 use App\Http\Controllers\Birdscontroller;
+use App\Http\Controllers\NewsController;
 Route::get('/', function () {
     return view('welcome');  
 });
@@ -36,6 +37,9 @@ Route::prefix('mp')->group(function () {
         
    
         Route::resource('laptops', LaptopController::class);
+
+        
+        Route::resource('news',NewsController::class);
 
 
 
