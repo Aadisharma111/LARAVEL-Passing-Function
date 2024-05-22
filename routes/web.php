@@ -40,9 +40,24 @@ Route::prefix('mp')->group(function () {
 
         
         Route::resource('news',NewsController::class);
-
-
-
+  
+  
+  
+     
+        //lets in the button call the welcome.blade.php function through resources
+      Route::get('/', function ()   {
+      return view('welcome');
+     });
+    
+     Route::get('/Second', function ()   {
+        return view('rewelcome');
+       });
+      
+       Route::get('/Backend', function ()   {
+        return view('details');
+       });
+      
+   
 
 
 
