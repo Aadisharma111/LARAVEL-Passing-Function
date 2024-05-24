@@ -57,6 +57,21 @@ Route::prefix('mp')->group(function () {
         return view('details');
        });
       
+       Route::get('/',function() {
+        return view ('login');
+       })->name('loginroute');
+  
+        Route::get('/register', function (){
+            return view('register');
+        })->name('registerroute');
+                  //get Accessed all the route 
+        Route::resource('user',LaraUserController::class);
+
+            // define the LarUserController to make the value output resources
+            
+        
+        
+
    
 
 
