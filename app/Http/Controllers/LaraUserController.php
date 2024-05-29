@@ -1,40 +1,78 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\Controller;
+
+use App\Models\LaraUser;
 use Illuminate\Http\Request;
 
 class LaraUserController extends Controller
 {
- 
-     public function index()
-     {
-        //
-     }
-           //store new creatly storage 
+    public function index()
+    {
+        // Logic to show a list of users
+    }
 
-       public function create ()
-       {
-          return 'store method';
-       }
-       public function show(LaraUser $larauser)
-       {
-        //
-       }
-          public function edit(LaraUser $larauser)
-          {
-            //
-          }
-              // updated the specified the resources
+    public function create()
+    {
+        // Logic to show the form for creating a new user
+    }
 
-          public function update(Request $request, LaraUser $larauser)
-          {
-            //
-          }
-             //now  we can remove the speeifed storage
+    public function store(Request $request)
+    {
+        // Validation logic
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed|min:8',
+        ]);
 
-             public function destroy(LaraUser $larauser)
-             {
-                //
-             }
- }    
+        // Create new user
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);  // Hash the password
+        LaraUser::create($data);
+
+        // Redirect after creation
+        return redirect()->route('registerroute')->with('success', 'User created successfully');
+    }
+
+    public function show(LaraUser $user)
+    {
+        // Logic to show a single user
+    }
+
+    public function edit(LaraUser $user)
+    {
+        // Logic to show the form for editing a user
+    }
+
+    public function update(Request $request, LaraUser $user)
+    {
+        // Validation logic
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'sometimes|confirmed|min:8',
+        ]);
+
+        // Update user details
+        $data = $request->all();
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+        $user->update($data);
+
+        // Redirect after update
+        return redirect()->route('users.index')->with('success', 'User updated successfully');
+    }
+
+    public function destroy(LaraUser $user)
+    {
+        // Logic to delete a user
+        $user->delete();
+
+        // Redirect after deletion
+        return redirect()->route('users.index')->with('success', 'User deleted successfully');
+    }
+}

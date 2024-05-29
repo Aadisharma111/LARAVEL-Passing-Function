@@ -1,27 +1,33 @@
 @extends('layouts.app')
 
-@section('content')   
-  <h1 class="text-center mt-5">Login Form<a href="{{ route('registerroute') }}">Go to Registration Forms</a></h1>
-   <form method="POST" action="">
-       <div class="mb-3">
-       <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="enter your email">
-       </div>
-            
-           <div class="mb-3">
-            <label for="inputPassoword5" class="form-label">Password</label>
-            <input type="Password" id="inputPassoword5" class="form-control" aria-describedby="passwordHelpBlock">
-            <div class="form-text-custom">
-            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+@section('content')
+
+    <h1 class="text-center mt-5">Login Form <a href="{{ route('registerroute') }}">Go to Registration Page</a></h1>
+    
+    @if($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <form method="POST" action="/login">
+        @csrf
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input required type="email" name="email" value="{{ old('email') }}" class="form-control" id="exampleFormControlInput1" placeholder="Enter your Email">
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword5" class="form-label">Password</label>
+            <input required type="password" name="password" value="" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+            <div class="form-text custom">
+                Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
             </div>
-             
-         
-            <input type="submit" onclick="return custom()" class="btn btn-primary" />
-            
-          <div>
-        </form>
+        </div>
+        <input type="submit" value="Login" onclick="return true" class="btn btn-primary" />
+    </form> 
 @endsection
-
-
-
-

@@ -10,6 +10,7 @@ use illuminate\Support\Facades\DB;
             $Mobile = DB::table('Mobile')->get();
             return view('Mobile',['Mobile'=>$Mobile]);
         }
-}
-                                    //Use Of Query Builders
-      
+}        
+                             //Use Of Query Builders 
+                 
+       
